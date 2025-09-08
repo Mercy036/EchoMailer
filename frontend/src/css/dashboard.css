@@ -1,0 +1,20 @@
+.dashboard-page {
+  margin-left: 270px; 
+  padding: 20px;
+  color: white; 
+}
+
+
+.page-title{
+    text-align: left;
+    margin-top: 0.5rem;
+    font-size: 30px;
+    color: rgb(255, 0, 200);
+}
+
+.page-subtitle{
+    text-align: left;
+    margin-top: 0.5rem;
+    font-size: 15px;
+    color: gray;
+}
