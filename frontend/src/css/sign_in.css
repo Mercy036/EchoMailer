@@ -1,0 +1,429 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    background-color: #000000;
+    font-family: 'Inter', sans-serif;
+    color: white;
+    overflow: hidden;
+}
+
+.sign-in-container {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.left-section {
+    width: 50%;
+    height: 100vh;
+    background-color: #181717;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 32px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 24px;
+    width: 100%;
+    justify-content: flex-start;
+}
+
+.logo {
+  position: absolute;
+  top:0.5em;  /* Pushes it to the top edge */
+  left:0.5em; 
+}
+
+.logo-icon img {
+    width: 24px;
+    height: 24px;
+}
+
+.logo-text {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+/* Welcome text */
+.welcome-section {
+    width: 100%;
+    margin-bottom: 24px;
+}
+
+.welcome-title {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+.welcome-subtitle {
+    color: #9ca3af;
+    font-size: 12px;
+    margin-bottom: 16px;
+}
+
+/* OAuth Buttons */
+.oauth-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 320px;
+}
+
+.oauth-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 16px;
+    border-radius: 6px;
+    background: #141414;
+    border: 1px solid #374151;
+    color: white;
+    font-size: 12px;
+    cursor: pointer;
+    transition: 0.3s;
+    height: 40px;
+    width: 100%; /* Added this to ensure full width */
+}
+
+/* Fixed: More specific selector for OAuth button icons */
+.oauth-button img {
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+    pointer-events: none; /* Added this to prevent icon from blocking hover */
+}
+
+.oauth-button:hover {
+    background: #2d3748;
+}
+
+
+.google-icon, .apple-icon {
+    margin-right: 8px;
+}
+
+.divider {
+    text-align: center;
+    margin: 16px 0;
+    position: relative;
+    width: 100%;
+    max-width: 320px;
+}
+
+.divider::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: #374151;
+}
+
+.divider-text {
+    background: #181717;
+    padding: 0 8px;
+    color: #6b7280;
+    font-size: 10px;
+    position: relative;
+}
+
+.form-section {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    max-width: 320px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.password-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
+}
+
+.form-label {
+    margin-bottom: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    text-align: left;
+}
+
+.forgot-password {
+    color: #3b82f6;
+    text-decoration: none;
+    font-size: 11px;
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+}
+
+.form-input-email {
+    padding: 10px 12px;
+    border-radius: 6px;
+    border: 0;
+    outline: none;
+    background: #141414;
+    color: white;
+    font-size: 12px;
+    height: 40px;
+    width: 100%; /* Changed from fixed 320px to 100% */
+}
+
+.form-input-password {
+    padding: 10px 12px;
+    border-radius: 6px;
+    border: 0;
+    outline: none;
+    background: #141414;
+    color: white;
+    font-size: 12px;
+    height: 40px;
+    width: 100%; /* Changed from fixed 320px to 100% */
+}
+
+.form-input:focus {
+    border-color: #3b82f6;
+    outline: none;
+}
+
+.password-input-container {
+    position: relative;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 0px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #6b7280;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+/* Buttons */
+.login-button {
+    background: #3b82f6;
+    color: white;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 12px;
+    margin-top: 6px;
+    height: 40px;
+    width: 100%; /* Added for consistency */
+}
+
+.login-button:hover {
+    background: #2563eb;
+}
+
+.sign-up-section {
+    margin-top: 16px;
+    text-align: center;
+    font-size: 11px;
+}
+
+.sign-up-text {
+    color: #9ca3af;
+}
+
+.sign-up-link {
+    color: #3b82f6;
+    text-decoration: none;
+}
+
+.sign-up-link:hover {
+    text-decoration: underline;
+}
+
+/* RIGHT SIDE */
+.right-section {
+    width: 50%;
+    height: 100vh;
+    background: hsl(220, 15%, 7%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.stats-text {
+    position: absolute;
+    top: 18%;
+    right: 50px;
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+}
+
+.stats-large {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.stats-small {
+    font-size: 14px;
+    color: #9ca3af;
+    margin-top: 4px;
+}
+
+/* Join Button */
+.join-button-container {
+    position: absolute;
+    top: 28%;
+    right: 50px;
+}
+
+.join-button {
+    background: linear-gradient(45deg, #8b5cf6, #3b82f6);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 12px;
+    color: white;
+}
+
+.join-button:hover {
+    transform: scale(1.05);
+    transition: transform 0.2s ease;
+}
+
+.trusted-title{
+    margin-top: -3rem;
+    right: 50px;
+    font-size: 50px;
+    font-weight: bolder;
+    color: #ffffff;
+}
+
+.trusted-subtitle{
+    margin-top: 0.5rem;
+    right: 50px;
+    font-size: 14px;
+    color: #ffffff;
+    max-width: 400px;
+    font-weight: bold;
+    opacity: 60%;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+.blob-outer-container{
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    z-index: 0;
+    inset: 0;
+    margin-left: 430px;
+    filter: blur(30px);
+    opacity: 0.4;
+}
+
+.blob-inner-container{
+    border-radius: 99999px;
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: 100vw;
+    height: 100vh;
+    min-width: 1000px;
+    overflow: hidden;
+    background-color: white;
+    transform: scale(0.4);
+}
+
+.blob{
+    position:absolute;
+    width: 100vw;
+    height: 100vh;
+    inset: 0;
+    margin: auto;
+    background: conic-gradient(from 0deg, #08f, #f60, #bbffa1, #4c00ff, #ab2666, #09f);
+    animation: spinBlob 20s linear infinite;
+}
+
+@keyframes spinBlob {
+    0% { 
+        transform: rotate(0deg) scale(2);
+     }
+    100% { 
+        transform: rotate(1turn) scale(2);
+     }
+}
+
+/* Fixed password toggle button positioning and click area */
+.password-input-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.form-input-password {
+    padding: 10px 40px 10px 12px; /* Added right padding for toggle button */
+    border-radius: 6px;
+    border: 0;
+    outline: none;
+    background: #141414;
+    color: white;
+    font-size: 12px;
+    height: 40px;
+    width: 100%;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 12px; /* Changed from 0px to 12px for proper spacing */
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #6b7280;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 4px; /* Added padding for larger click area */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 24px; /* Ensures minimum click area */
+    min-height: 24px;
+    z-index: 10; /* Ensures button is above input */
+}
+
+.password-toggle:hover {
+    color: #9ca3af; /* Added hover effect for better UX */
+}
