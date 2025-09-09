@@ -45,7 +45,7 @@ html, body {
 .logo {
   position: absolute;
   top:1em;  
-  left:-14.5em; 
+  left:1em;
 }
 
 .logo-icon img {

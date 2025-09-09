@@ -8,7 +8,9 @@ import composeIcon from "../assets/paper-airplane-svgrepo-com.svg";
 function Sidebar() {
     return (
         <div className="sidebar">
+
             <div className="nav-section">
+                
                 <div className="dashboard">
                     <img src={dashboardIcon} alt="dashboard" />
                     Dashboard

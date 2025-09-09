@@ -10,14 +10,17 @@ import rateStatIcon from "../assets/rate.svg";
 import planeCardIcon from "../assets/paper-plane-svgrepo-com-pink.svg"
 import peopleCardIcon from "../assets/people-svgrepo-com-pink.svg"
 import upCardIcon from "../assets/up-trend-svgrepo-com-pink.svg"
+import calenderIcon from "../assets/calender-svgrepo-com.svg"
+import pageIcon from "../assets/page.svg"
+import rateIcon from "../assets/rate.svg"
 function Dashboard() {
     return (
         <>            <Sidebar />
             <div className="dashboard-page">
                 <div className="dashboard-header">
                     <div className="header-content">
-                        <div className="logo">
-                            <img src={emailIcon} alt="logo" />
+                        <div className="dashboard-logo">
+                            <img src={emailIcon} alt="dashboard-logo" />
                             <h2>EchoMailer</h2>
                         </div>
                         
@@ -109,7 +112,7 @@ function Dashboard() {
                             <div className="action-item">
                                 <div className="action-content">
                                     <div className="action-icon">
-                                        <img src={planeCardIcon} alt="" />
+                                        <img src={planeStatIcon} alt="" />
                                     </div>
                                     <div className="action-text">
                                         <div className="action-title">Create New Campaign</div>
@@ -121,7 +124,9 @@ function Dashboard() {
 
                             <div className="action-item">
                                 <div className="action-content">
-                                    <span className="action-icon">📧</span>
+                                    <div className="action-icon">
+                                        <img src={calenderIcon} alt="" />
+                                    </div>
                                     <div className="action-text">
                                         <div className="action-title">Schedule Newsletter</div>
                                         <div className="action-subtitle">Weekly newsletter ready to send</div>
@@ -135,7 +140,9 @@ function Dashboard() {
 
                             <div className="action-item">
                                 <div className="action-content">
-                                    <span className="action-icon">📝</span>
+                                    <div className="action-icon">
+                                        <img src={pageIcon} alt="" />
+                                    </div>
                                     <div className="action-text">
                                         <div className="action-title">Review Templates</div>
                                         <div className="action-subtitle">3 new templates available</div>
@@ -146,7 +153,9 @@ function Dashboard() {
 
                             <div className="action-item">
                                 <div className="action-content">
-                                    <span className="action-icon">📊</span>
+                                    <div className="action-icon">
+                                        <img src={rateIcon} alt="" />
+                                    </div>
                                     <div className="action-text">
                                         <div className="action-title">Check Analytics</div>
                                         <div className="action-subtitle">View detailed performance metrics</div>
