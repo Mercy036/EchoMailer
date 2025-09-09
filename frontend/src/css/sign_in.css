@@ -44,8 +44,8 @@ html, body {
 
 .logo {
   position: absolute;
-  top:0.5em;  /* Pushes it to the top edge */
-  left:0.5em; 
+  top:1em;  
+  left:-14.5em; 
 }
 
 .logo-icon img {

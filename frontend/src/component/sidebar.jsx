@@ -8,11 +8,6 @@ import composeIcon from "../assets/paper-airplane-svgrepo-com.svg";
 function Sidebar() {
     return (
         <div className="sidebar">
-            <div className="logo">
-                <img src={emailIcon} alt="logo" />
-                <h2>EchoMailer</h2>
-            </div>
-
             <div className="nav-section">
                 <div className="dashboard">
                     <img src={dashboardIcon} alt="dashboard" />

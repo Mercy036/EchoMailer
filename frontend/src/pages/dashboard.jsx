@@ -1,20 +1,26 @@
 import Sidebar from "../component/sidebar";
 import React, { useState, useEffect } from "react";
 import "../css/dashboard.css";
-
+import emailIcon from "../assets/email.svg";
 import emailStatIcon from "../assets/email-1-svgrepo-com.svg";
-
 import clockStatIcon from "../assets/clock-three-svgrepo-com.svg";
 import tickStatIcon from "../assets/tick.svg";
+import planeStatIcon from "../assets/paper-airplane-svgrepo-com.svg";
 import rateStatIcon from "../assets/rate.svg";
+import planeCardIcon from "../assets/paper-plane-svgrepo-com-pink.svg"
+import peopleCardIcon from "../assets/people-svgrepo-com-pink.svg"
+import upCardIcon from "../assets/up-trend-svgrepo-com-pink.svg"
 function Dashboard() {
     return (
         <>            <Sidebar />
             <div className="dashboard-page">
                 <div className="dashboard-header">
                     <div className="header-content">
-                        <h2 className="page-title">Dashboard</h2>
-                        <h3 className="page-subtitle">Welcome back! Here's what's happening with your email campaigns.</h3>
+                        <div className="logo">
+                            <img src={emailIcon} alt="logo" />
+                            <h2>EchoMailer</h2>
+                        </div>
+                        
                     </div>
                     <button className="new-email-btn">
                         <span className="btn-icon">+</span>
@@ -78,17 +84,22 @@ function Dashboard() {
                         </h2>
                         <div className="insights-stats">
                             <div className="insight-item">
-                                <div className="insight-icon">🚀</div>
+                                <div className="insight-icon">
+                                    <img src={planeCardIcon} alt="planecard" />
+                                </div>
                                 <div className="insight-number">12</div>
                                 <div className="insight-label">Active Campaigns</div>
                             </div>
                             <div className="insight-item">
-                                <div className="insight-icon">👥</div>
+                                <div className="insight-icon">
+                                    <img src={peopleCardIcon} alt="peoplecard" /></div>
                                 <div className="insight-number">8,549</div>
                                 <div className="insight-label">Total Subscribers</div>
                             </div>
                             <div className="insight-item">
-                                <div className="insight-icon">📈</div>
+                                <div className="insight-icon">
+                                    <img src={upCardIcon} alt="upicon" />
+                                </div>
                                 <div className="insight-number">94.2%</div>
                                 <div className="insight-label">This Month</div>
                             </div>
@@ -97,7 +108,9 @@ function Dashboard() {
                         <div className="actions-list">
                             <div className="action-item">
                                 <div className="action-content">
-                                    <span className="action-icon">🚀</span>
+                                    <div className="action-icon">
+                                        <img src={planeCardIcon} alt="" />
+                                    </div>
                                     <div className="action-text">
                                         <div className="action-title">Create New Campaign</div>
                                         <div className="action-subtitle">Start a new email marketing campaign</div>

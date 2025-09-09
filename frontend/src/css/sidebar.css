@@ -3,13 +3,13 @@ body{
 }
 
 .sidebar {
-  width: 250px;
+  width: 220px;
   height: 100vh;
   background-color: hsl(240,5.9%,10%);
   position: fixed;
-  border-radius: 15px;  
+  border-radius: 10px;  
   top: 0;
-  left: 8px;
+  left: 4px;
   padding: 20px;
   box-sizing: border-box;
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -17,7 +17,7 @@ body{
   border-bottom-right-radius: 0;
   display: flex;
   flex-direction: column;
-  overflow-y: auto;
+
 }
 
 .sidebar img{
@@ -34,13 +34,13 @@ body{
   font-size: 15px;
   font-weight: bold;
   margin-bottom: 2rem;
-  margin-left:0.3rem ;
+  margin-left:0rem ;
 }
 
 .logo img{
     width: 30px;
     height: 30px;
-    margin-left: 0.5rem;
+    margin-left: 0.3rem;
 }
 
 .logo h2 {
@@ -57,19 +57,19 @@ body{
 }
 
 .dashboard img{
-  width: 25px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
 }
 
 .dashboard {
-  font-size: 18px;
+  font-size: 15px;
   color: white;
   display: flex;
   align-items: center; 
   gap: 15px; 
   cursor: pointer;
-  margin-left: 1em;
-  margin-top: 8rem;
+  margin-left: 0.5em;
+  margin-top: 6rem;
   padding: 12px 20px;
   border-radius: 8px;
   font-weight: 500;
@@ -81,13 +81,13 @@ body{
 }
 
 .email{
-  font-size: 18px;
+  font-size: 15px;
   color: white;
   display: flex;
   align-items: center; 
   gap: 15px; 
   cursor: pointer;
-  margin-left: 1em;
+  margin-left: 0.1em;
   padding: 12px 20px;
   border-radius: 8px;
   font-weight: 500;
@@ -104,13 +104,13 @@ body{
 }
 
 .compose{
-  font-size: 18px;
+  font-size: 15px;
   color: white;
   display: flex;
   align-items: center; 
   gap: 15px; 
   cursor: pointer;
-  margin-left: 1em;
+  margin-left: 0.3em;
   padding: 12px 20px;
   border-radius: 8px;
   font-weight: 500;
@@ -122,8 +122,8 @@ body{
 }
 
 .compose img{
-  width: 25px;
-  height: 25px;
+  width: 18px;
+  height: 18px;
 }
 
 .sidebar hr {
@@ -152,15 +152,16 @@ body{
   color: white;
   font-weight: 600;
   font-size: 16px;
-  margin-left: 2rem;
+  margin-left: 1.5rem;
   margin-bottom: 0.5rem;
+  cursor: pointer;
 }
 
 .profile-name {
   font-size: 16px;
   font-weight: 500;
   color: white;
-  margin-left: 5.3rem;
+  margin-left: 5rem;
   margin-top: -3rem;
   width: 100px;
   text-align: left;
@@ -169,7 +170,7 @@ body{
 .profile-email {
   font-size: 12px;
   color: #9ca3af;
-  margin-left: 5.3rem;
+  margin-left: 5rem;
   width: 100px;
   text-align: left;
   margin-bottom: 1rem;
@@ -178,7 +179,7 @@ body{
 .logout-button {
   margin-left: 0.35rem;
   margin-right: 2rem;
-  width: 200px;
+  width: 180px;
 }
 
 .logout-button button {
