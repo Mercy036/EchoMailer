@@ -44,17 +44,22 @@ html, body {
 
 .logo {
   position: absolute;
-  top:1em;  
-  left:1em;
+  top: 1em;  
+  left: 1em;
+  display: flex;         
+  align-items: center;    
+  gap: 8px;               
 }
+
 
 .logo-icon img {
     width: 24px;
     height: 24px;
+    margin-top: 0.4em;
 }
 
 .logo-text {
-    font-size: 16px;
+    font-size: 20px;
     font-weight: 600;
 }
 
@@ -99,15 +104,14 @@ html, body {
     cursor: pointer;
     transition: 0.3s;
     height: 40px;
-    width: 100%; /* Added this to ensure full width */
+    width: 100%; 
 }
 
-/* Fixed: More specific selector for OAuth button icons */
 .oauth-button img {
     width: 24px;
     height: 24px;
     margin-right: 8px;
-    pointer-events: none; /* Added this to prevent icon from blocking hover */
+    pointer-events: none; 
 }
 
 .oauth-button:hover {
@@ -191,7 +195,7 @@ html, body {
     color: white;
     font-size: 12px;
     height: 40px;
-    width: 100%; /* Changed from fixed 320px to 100% */
+    width: 100%; 
 }
 
 .form-input-password {
@@ -203,7 +207,7 @@ html, body {
     color: white;
     font-size: 12px;
     height: 40px;
-    width: 100%; /* Changed from fixed 320px to 100% */
+    width: 100%; 
 }
 
 .form-input:focus {
@@ -227,7 +231,6 @@ html, body {
     font-size: 14px;
 }
 
-/* Buttons */
 .login-button {
     background: #3b82f6;
     color: white;
@@ -239,7 +242,7 @@ html, body {
     font-size: 12px;
     margin-top: 6px;
     height: 40px;
-    width: 100%; /* Added for consistency */
+    width: 100%; 
 }
 
 .login-button:hover {
@@ -265,7 +268,6 @@ html, body {
     text-decoration: underline;
 }
 
-/* RIGHT SIDE */
 .right-section {
     width: 50%;
     height: 100vh;
@@ -297,7 +299,6 @@ html, body {
     margin-top: 4px;
 }
 
-/* Join Button */
 .join-button-container {
     position: absolute;
     top: 28%;
@@ -386,7 +387,6 @@ html, body {
      }
 }
 
-/* Fixed password toggle button positioning and click area */
 .password-input-container {
     position: relative;
     display: flex;
@@ -394,7 +394,7 @@ html, body {
 }
 
 .form-input-password {
-    padding: 10px 40px 10px 12px; /* Added right padding for toggle button */
+    padding: 10px 40px 10px 12px; 
     border-radius: 6px;
     border: 0;
     outline: none;
@@ -407,7 +407,7 @@ html, body {
 
 .password-toggle {
     position: absolute;
-    right: 12px; /* Changed from 0px to 12px for proper spacing */
+    right: 12px; 
     top: 50%;
     transform: translateY(-50%);
     background: none;
@@ -415,15 +415,15 @@ html, body {
     color: #6b7280;
     cursor: pointer;
     font-size: 14px;
-    padding: 4px; /* Added padding for larger click area */
+    padding: 4px; 
     display: flex;
     align-items: center;
     justify-content: center;
-    min-width: 24px; /* Ensures minimum click area */
+    min-width: 24px; 
     min-height: 24px;
-    z-index: 10; /* Ensures button is above input */
+    z-index: 10;
 }
 
 .password-toggle:hover {
-    color: #9ca3af; /* Added hover effect for better UX */
+    color: #9ca3af; 
 }
