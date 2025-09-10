@@ -13,7 +13,10 @@ import upCardIcon from "../assets/up-trend-svgrepo-com-pink.svg"
 import calenderIcon from "../assets/calender-svgrepo-com.svg"
 import pageIcon from "../assets/page.svg"
 import rateIcon from "../assets/rate.svg"
+import { useNavigate } from 'react-router-dom';
 function Dashboard() {
+    const navigate = useNavigate();
+
     return (
         <>            <Sidebar />
             <div className="dashboard-page">
@@ -25,7 +28,7 @@ function Dashboard() {
                         </div>
                         
                     </div>
-                    <button className="new-email-btn">
+                    <button onClick={() => navigate('/compose')}   className="new-email-btn">
                         <span className="btn-icon">+</span>
                         New Email
                     </button>
