@@ -1,0 +1,454 @@
+.emails-page {
+  margin-left: 235px; 
+  padding: 20px;
+  color: white; 
+  background-color: hsl(220 13% 8%);
+  max-height: 100vh;
+  width: calc(100vw - 235px);
+  overflow-y: auto;
+  box-sizing: border-box;
+  border-top-left-radius: 10px;
+}
+
+.emails-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+  background-color: hsl(220 13% 13%);
+  border: 1px solid hsla(218, 8%, 28%, 0.401);
+  border-radius: 15px;
+  padding: 1rem;
+  margin-top: 1.5rem;
+  height: 60px;
+}
+
+.header-content {
+  flex: 1;
+}
+
+.emails-logo {
+  display: flex;
+  align-items: center; 
+  font-family: 'Poppins', sans-serif;
+  color: rgb(255, 255, 255);
+  gap: 12px; 
+  font-size: 15px;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.emails-logo img {
+  width: 24px;
+  height: 24px;
+}
+
+.emails-logo h1 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+  color: white;
+}
+
+.header-subtitle {
+  margin: 0;
+  font-size: 14px;
+  color: #9ca3af;
+  margin-left: 36px;
+}
+
+.new-campaign-btn {
+  background-color: rgb(255, 0, 200);
+  color: white;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background-color 0.3s ease;
+    margin-top: -0.4rem;
+}
+
+.new-campaign-btn:hover {
+  background-color: rgb(220, 0, 180);
+}
+
+.btn-icon {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.emails-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  background-color: hsl(220 13% 13%);
+  border: 1px solid hsla(218, 8%, 28%, 0.401);
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+.filters-section {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.filter-group,
+.sort-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.filter-icon,
+.sort-icon {
+  width: 16px;
+  height: 16px;
+  opacity: 0.7;
+}
+
+.filter-select,
+.sort-select {
+  background-color: hsl(220 13% 10%);
+  border: 1px solid hsla(218, 8%, 28%, 0.401);
+  border-radius: 6px;
+  color: white;
+  font-size: 12px;
+  padding: 8px 12px;
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+
+.filter-select:focus,
+.sort-select:focus {
+  border-color: rgb(255, 0, 200);
+}
+
+.filter-select option,
+.sort-select option {
+  background-color: hsl(220 13% 10%);
+  color: white;
+}
+
+.search-section {
+  flex: 1;
+  max-width: 300px;
+}
+
+.search-container {
+  position: relative;
+  width: 100%;
+}
+
+.search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  opacity: 0.5;
+}
+
+.search-input {
+  width: 100%;
+  height: 36px;
+  padding: 8px 16px 8px 40px;
+  background-color: hsl(220 13% 10%);
+  border: 1px solid hsla(218, 8%, 28%, 0.401);
+  border-radius: 6px;
+  color: white;
+  font-size: 12px;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+}
+
+.search-input:focus {
+  border-color: rgb(255, 0, 200);
+}
+
+.search-input::placeholder {
+  color: #9ca3af;
+}
+
+.campaign-stats {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+  background-color: hsl(220 13% 13%);
+  border: 1px solid hsla(218, 8%, 28%, 0.401);
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
+.stat-item {
+  text-align: center;
+  flex: 1;
+}
+
+.stat-number {
+  font-size: 24px;
+  font-weight: bold;
+  color: rgb(255, 0, 200);
+  margin-bottom: 4px;
+}
+
+.stat-label {
+  font-size: 12px;
+  color: #9ca3af;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.campaigns-container {
+  background-color: hsl(220 13% 13%);
+  border: 1px solid hsla(218, 8%, 28%, 0.401);
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
+.campaigns-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid hsla(218, 8%, 28%, 0.401);
+}
+
+.campaigns-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  margin: 0;
+}
+
+.campaigns-count {
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+.campaigns-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.campaign-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 1.5rem;
+  background-color: hsl(220 13% 12%);
+  border: 1px solid hsla(218, 8%, 28%, 0.2);
+  border-radius: 10px;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.campaign-card:hover {
+  border-color: hsla(218, 8%, 28%, 0.6);
+  background-color: hsl(220 13% 11%);
+}
+
+.campaign-main {
+  flex: 1;
+  margin-right: 1rem;
+}
+
+.campaign-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.5rem;
+  gap: 1rem;
+}
+
+.campaign-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: white;
+  text-align: center;
+  flex: 1;
+  line-height: 1.4;
+  margin-left: 5rem;
+}
+
+.status-badge {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.status-badge.sent {
+  background-color: #10b981;
+  color: white;
+}
+
+.status-badge.scheduled {
+  background-color: #fbbf24;
+  color: #000;
+}
+
+.status-badge.failed {
+  background-color: #ef4444;
+  color: white;
+}
+
+.status-badge.draft {
+  background-color: #6b7280;
+  color: white;
+}
+
+.campaign-subject {
+  font-size: 13px;
+  color: #d1d5db;
+  flex: 1;
+  margin-bottom: 0.25rem;
+  text-align: center;
+
+}
+
+.campaign-subject strong {
+  color: white;
+  font-weight: 500;
+}
+
+.campaign-recipients {
+  font-size: 12px;
+  color: #9ca3af;
+  margin-bottom: 0.75rem;
+  flex: 1;
+  text-align: center;
+}
+
+.campaign-recipients strong {
+  color: #d1d5db;
+  font-weight: 500;
+}
+
+.campaign-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  color: #9ca3af;
+  flex-wrap: wrap;
+}
+
+.meta-icon {
+  width: 12px;
+  height: 12px;
+  opacity: 0.7;
+}
+
+.campaign-actions {
+  display: flex;
+  gap: 4px;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+
+.action-btn {
+  background: none;
+  border: 1px solid hsla(218, 8%, 28%, 0.401);
+  padding: 6px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 12px;
+  color: #9ca3af;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+}
+
+.action-btn:hover {
+  background-color: hsla(218, 8%, 28%, 0.3);
+  border-color: hsla(218, 8%, 28%, 0.6);
+}
+
+.action-btn.view-btn:hover {
+  color: #3b82f6;
+  border-color: #3b82f6;
+}
+
+.action-btn.edit-btn:hover {
+  color: #10b981;
+  border-color: #10b981;
+}
+
+.action-btn.send-btn:hover {
+  color: rgb(255, 0, 200);
+  border-color: rgb(255, 0, 200);
+}
+
+.action-btn.delete-btn:hover {
+  color: #ef4444;
+  border-color: #ef4444;
+}
+
+.send-icon {
+  width: 12px;
+  height: 12px;
+  filter: brightness(0) invert(1);
+}
+
+.empty-state {
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.empty-icon {
+  font-size: 48px;
+  margin-bottom: 1rem;
+}
+
+.empty-state h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: white;
+  margin: 0 0 0.5rem 0;
+}
+
+.empty-state p {
+  font-size: 14px;
+  color: #9ca3af;
+  margin: 0 0 2rem 0;
+}
+
+.empty-cta-btn {
+  background-color: rgb(255, 0, 200);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.empty-cta-btn:hover {
+  background-color: rgb(220, 0, 180);
+}
+
+.empty-cta-btn .btn-icon {
+  width: 16px;
+  height: 16px;
+  filter: brightness(0) invert(1);
+}
