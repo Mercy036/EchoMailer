@@ -28,7 +28,7 @@ function Dashboard() {
                         </div>
                         
                     </div>
-                    <button onClick={() => navigate('/compose')}   className="new-email-btn">
+                    <button onClick={() => navigate('/compose')} className="new-email-btn">
                         <span className="btn-icon">+</span>
                         New Email
                     </button>
