@@ -34,7 +34,6 @@ function Compose() {
         <>
             <Sidebar />
             <div className="compose-page">
-                {/* Header */}
                 <div className="compose-header">
                     <div className="header-content">
                         <div className="compose-logo">
@@ -71,7 +70,6 @@ function Compose() {
                             />
                         </div>
 
-                        {/* Email Content */}
                         <div className="form-group">
                             <label className="form-label">Email Content</label>
                             <textarea
@@ -98,7 +96,7 @@ function Compose() {
                                 <option value="announcement">Announcement</option>
                             </select>
                         </div>
-                        <div className="sidebar-panel SCHEDULE">
+                        <div className={`sidebar-panel SCHEDULE ${scheduleFor === 'now' ? 'collapsed' : ''}`}>
                             <div className="panel-header">
                                 <div className="schedule-icon">
                                     <img src={clockScheduleIcon} alt="" />
@@ -106,7 +104,7 @@ function Compose() {
                                 <h3 className="panel-title SCHEDULE">Schedule</h3>
                             </div>
                             
-                            <div className="schedule-options">
+                            <div className={`schedule-options ${scheduleFor === 'now' ? 'small' : ''}`}>
                                 <label className="radio-option">
                                     <input
                                         type="radio"
@@ -114,6 +112,7 @@ function Compose() {
                                         value="now"
                                         checked={scheduleFor === 'now'}
                                         onChange={(e) => setScheduleFor(e.target.value)}
+                                        onClick={()=>{}}
                                     />
                                     <span className="radio-text">Send now</span>
                                 </label>
@@ -149,7 +148,7 @@ function Compose() {
                         </div>
                         <button className="send-btn" onClick={handleSend}>
                             <img src={planeIcon} alt="send" className="send-icon" />
-                            {scheduleFor === 'now' ? 'Send Now' : 'Schedule'}
+                            Send
                         </button>
                     </div>
                 </div>
