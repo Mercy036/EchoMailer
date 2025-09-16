@@ -1,3 +1,14 @@
+:root {
+  --brand-accent: hsl(310, 61%, 70%);
+  --brand-accent-10: hsl(310 61% 70% / 0.1);
+  --brand-accent-20: hsl(310 61% 70% / 0.2);
+  --brand-accent-30: hsl(310 61% 70% / 0.3);
+  --brand-warning: hsl(48, 96%, 62%);
+  --brand-warning-10: hsl(48 96% 62% / 0.1);
+  --brand-warning-20: hsl(48 96% 62% / 0.2);
+}
+
+
 .emails-page {
   margin-left: 235px; 
   padding: 20px;
@@ -107,8 +118,8 @@
 
 .filter-icon,
 .sort-icon {
-  width: 16px;
-  height: 16px;
+  width: 25px;
+  height: 25px;
   opacity: 0.7;
 }
 
@@ -274,39 +285,40 @@
   font-size: 20px;
   font-weight: 600;
   color: white;
-  text-align: center;
-  flex: 1;
+  text-align: left;
+  width: fit-content;
   line-height: 1.4;
-  margin-left: 5rem;
+  flex: none; 
 }
 
 .status-badge {
   font-size: 10px;
   font-weight: 600;
-  padding: 4px 8px;
-  border-radius: 4px;
+  padding: 4px 14px;
+  border-radius: 100px;
   text-transform: uppercase;
   white-space: nowrap;
 }
 
 .status-badge.sent {
-  background-color: #10b981;
-  color: white;
+  color: var(--brand-accent);
+  background-color: var(--brand-accent-10);
+  border: 1px solid var(--brand-accent-20);
+
 }
 
 .status-badge.scheduled {
-  background-color: #fbbf24;
-  color: #000;
+  color: var(--brand-warning);
+  background-color: var(--brand-warning-10);
+  border: 1px solid var(--brand-warning-20);
 }
 
-.status-badge.failed {
-  background-color: #ef4444;
-  color: white;
-}
-
-.status-badge.draft {
-  background-color: #6b7280;
-  color: white;
+.status-icon{
+  width: 12px;
+  height: 12px;
+  margin-right: 6px;
+  margin-bottom: -2px;
+  margin-top: 2px;
 }
 
 .campaign-subject {
@@ -314,7 +326,7 @@
   color: #d1d5db;
   flex: 1;
   margin-bottom: 0.25rem;
-  text-align: center;
+  text-align: left;
 
 }
 
@@ -328,7 +340,7 @@
   color: #9ca3af;
   margin-bottom: 0.75rem;
   flex: 1;
-  text-align: center;
+  text-align: left;
 }
 
 .campaign-recipients strong {
@@ -360,7 +372,6 @@
 
 .action-btn {
   background: none;
-  border: 1px solid hsla(218, 8%, 28%, 0.401);
   padding: 6px;
   border-radius: 6px;
   cursor: pointer;
@@ -397,6 +408,12 @@
 .action-btn.delete-btn:hover {
   color: #ef4444;
   border-color: #ef4444;
+}
+
+.action-btn img{
+  width: 20px;
+  height: 20px;
+  
 }
 
 .send-icon {
@@ -451,4 +468,11 @@
   width: 16px;
   height: 16px;
   filter: brightness(0) invert(1);
+}
+.campaign-header {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 1rem;
+  align-items: flex-start;
+  margin-bottom: 0.5rem;
 }

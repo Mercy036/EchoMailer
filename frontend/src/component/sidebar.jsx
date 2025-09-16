@@ -1,31 +1,43 @@
-import React from "react"; 
+import React from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import "../css/sidebar.css";
-import emailIcon from "../assets/email.svg";
 import dashboardIcon from "../assets/bar-graph-statistics-svgrepo-com.svg";
 import emailOpenIcon from "../assets/email-1-svgrepo-com.svg";
 import composeIcon from "../assets/paper-airplane-svgrepo-com.svg";
 
 function Sidebar() {
+    const navigate = useNavigate();
+    const pageLocation = useLocation();
+
     return (
         <div className="sidebar">
-
             <div className="nav-section">
-                
-                <div className="dashboard">
+                <div
+                    className={`dashboard ${pageLocation.pathname === "/dashboard" ? "active" : ""}`}
+                    onClick={() => navigate("/dashboard")}
+                >
                     <img src={dashboardIcon} alt="dashboard" />
                     Dashboard
                 </div>
-                <div className="email">
+
+                <div
+                    className={`email ${pageLocation.pathname === "/emails" ? "active" : ""}`}
+                    onClick={() => navigate("/emails")}
+                >
                     <img src={emailOpenIcon} alt="email" />
                     Email
                 </div>
-                <div className="compose">
+
+                <div
+                    className={`compose ${pageLocation.pathname === "/compose" ? "active" : ""}`}
+                    onClick={() => navigate("/compose")}
+                >
                     <img src={composeIcon} alt="compose" />
                     Compose
                 </div>
             </div>
-            
-            <hr/>
+
+            <hr />
 
             <div className="profile-section">
                 <div className="profile-picture">A</div>

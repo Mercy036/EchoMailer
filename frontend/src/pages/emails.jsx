@@ -8,6 +8,11 @@ import filterIcon from "../assets/filter.svg";
 import searchIcon from "../assets/search.svg";
 import calendarIcon from "../assets/calender-svgrepo-com.svg";
 import sortIcon from "../assets/sort.svg";
+import eyeIcon from "../assets/eye-svgrepo-com.svg";
+import notepadIcon from "../assets/notepad-svgrepo-com.svg";
+import deleteIcon from "../assets/delete-2-svgrepo-com.svg";
+import pinkTickIcon from "../assets/pink-tick.svg";
+import yellowClockIcon from "../assets/yellow-clock.svg";
 
 function Emails() {
     const navigate = useNavigate();
@@ -55,16 +60,6 @@ function Emails() {
             template: "promotional"
         },
         {
-            id: 4,
-            title: "Account Security Update Required",
-            recipients: ["security@example.com"],
-            status: "failed",
-            sentDate: "2024-01-07",
-            sentTime: "11:45 AM",
-            subject: "Important: Security update required for your account",
-            template: "security"
-        },
-        {
             id: 5,
             title: "Monthly Report - December Analytics",
             recipients: ["reports@example.com", "analytics@example.com"],
@@ -76,14 +71,6 @@ function Emails() {
             deliveryRate: "99.1%",
             subject: "Your December analytics report is ready",
             template: "report"
-        },
-        {
-            id: 6,
-            title: "Holiday Greetings from EchoMailer Team",
-            recipients: ["all-users@example.com"],
-            status: "draft",
-            subject: "Happy holidays from all of us at EchoMailer!",
-            template: "announcement"
         },
         {
             id: 7,
@@ -135,7 +122,6 @@ function Emails() {
         <>
             <Sidebar />
             <div className="emails-page">
-                {/* Header */}
                 <div className="emails-header">
                     <div className="header-content">
                         <div className="emails-logo">
@@ -149,7 +135,6 @@ function Emails() {
                     </button>
                 </div>
 
-                {/* Filters and Search */}
                 <div className="emails-controls">
                     <div className="filters-section">
                         <div className="filter-group">
@@ -162,8 +147,6 @@ function Emails() {
                                 <option value="all">All Campaigns</option>
                                 <option value="sent">Sent</option>
                                 <option value="scheduled">Scheduled</option>
-                                <option value="draft">Draft</option>
-                                <option value="failed">Failed</option>
                             </select>
                         </div>
                         
@@ -195,7 +178,6 @@ function Emails() {
                     </div>
                 </div>
 
-                {/* Campaign List */}
                 <div className="campaigns-container">
                     <div className="campaigns-header-row">
                         <h2 className="campaigns-title">Recent Email Campaigns</h2>
@@ -209,7 +191,19 @@ function Emails() {
                                     <div className="campaign-header">
                                         <h3 className="campaign-title">{campaign.title}</h3>
                                         <span className={getStatusBadgeClass(campaign.status)}>
-                                            {campaign.status}
+                                            {campaign.status === "sent" && (
+                                                <>
+                                                <img src={pinkTickIcon} alt="sent" className="status-icon" />
+                                                Sent
+                                                </>
+                                            )}
+                                            {campaign.status === "scheduled" && (
+                                                <>
+                                                <img src={yellowClockIcon} alt="scheduled" className="status-icon" />
+                                                Scheduled
+                                                </>
+                                            )}
+                                            {campaign.status !== "sent" && campaign.status !== "scheduled" && campaign.status}
                                         </span>
                                     </div>
                                     
@@ -250,26 +244,13 @@ function Emails() {
 
                                 <div className="campaign-actions">
                                     <button className="action-btn view-btn" title="View">
-                                        👁️
+                                        <img src={eyeIcon} alt="" />
                                     </button>
                                     <button className="action-btn edit-btn" title="Edit">
-                                        ✏️
+                                        <img src={notepadIcon} alt="" />
                                     </button>
-                                    <button className="action-btn duplicate-btn" title="Duplicate">
-                                        📋
-                                    </button>
-                                    {campaign.status === 'scheduled' && (
-                                        <button className="action-btn cancel-btn" title="Cancel">
-                                            ❌
-                                        </button>
-                                    )}
-                                    {campaign.status === 'draft' && (
-                                        <button className="action-btn send-btn" title="Send Now">
-                                            <img src={planeIcon} alt="send" className="send-icon" />
-                                        </button>
-                                    )}
                                     <button className="action-btn delete-btn" title="Delete">
-                                        🗑️
+                                        <img src={deleteIcon} alt="" />
                                     </button>
                                 </div>
                             </div>
