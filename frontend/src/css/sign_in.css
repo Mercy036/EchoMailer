@@ -250,18 +250,20 @@ html, body {
 }
 
 .sign-up-section {
-    margin-top: 16px;
+    margin-top: 0px;
     text-align: center;
     font-size: 11px;
 }
 
 .sign-up-text {
     color: #9ca3af;
+    margin-right: 0rem;
 }
 
 .sign-up-link {
     color: #3b82f6;
     text-decoration: none;
+    margin-right: 10rem;
 }
 
 .sign-up-link:hover {
@@ -327,6 +329,7 @@ html, body {
     font-size: 50px;
     font-weight: bolder;
     color: #ffffff;
+    margin-left: 2rem;
 }
 
 .trusted-subtitle{
@@ -337,6 +340,7 @@ html, body {
     max-width: 400px;
     font-weight: bold;
     opacity: 60%;
+    margin-left: 2rem;
 }
 
 @keyframes float {

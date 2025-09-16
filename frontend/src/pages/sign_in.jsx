@@ -3,8 +3,10 @@ import "../css/sign_in.css";
 
 import emailIcon from "../assets/email.svg";
 import googleIcon from "../assets/icons8-google.svg";
+import {useNavigate} from 'react-router-dom';
 
 function SignIn() {
+    const navigate=useNavigate();
     const [email,setEmail]=useState('');
     const [password,setPassword]=useState('');
     const [showPassword,setShowPassword]=useState(false);
@@ -29,15 +31,6 @@ function SignIn() {
                     <p className="welcome-subtitle">Log in to EchoMailer</p>
                 </div>
 
-                <div className="oauth-buttons">
-                    <button onClick={handleGoogleSignIn} className="oauth-button">
-                        <img src={googleIcon} alt="Google logo" className="oauth-icon" />
-                        Log in with Google
-                    </button>
-                </div>
-                <div className="divider">
-                    <span className="divider-text">OR</span>
-                </div>
                 <div className="form-section">
                     <div className="form-group">
                         <label className="form-label">Email</label>
@@ -52,7 +45,6 @@ function SignIn() {
                     <div className="form-group">
                         <div className="password-header">
                             <label className="form-label">Password</label>
-                            <a href="#" className="forgot-password">Forgot password?</a>
                         </div>
                         <div className="password-input-container">
                             <input
@@ -74,7 +66,10 @@ function SignIn() {
                     <button onClick={handleSignIn} className="login-button">Log in</button>
                     <div className="sign-up-section">
                         <span className="sign-up-text">Don't have an account? </span>
-                        <a href="#" className="sign-up-link">Sign up</a>
+                        <a href="#" className="sign-up-link" onClick={(e)=>{
+                            e.preventDefault();
+                            navigate('/signup');
+                        }}>Sign up</a>
                     </div>
                 </div>
             </div>
