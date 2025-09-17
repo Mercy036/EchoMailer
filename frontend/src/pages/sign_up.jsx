@@ -2,11 +2,14 @@ import { useState } from "react";
 import "../css/sign_up.css";
 
 import emailIcon from "../assets/email.svg";
-
+import {useNavigate} from 'react-router-dom';
 function SignUp() {
+    const navigate=useNavigate();
     const [email,setEmail]=useState('');
     const [password,setPassword]=useState('');
     const [showPassword,setShowPassword]=useState(false);
+    const [appPassword,setAppPassword]=useState('');
+    const [showAppPassword,setShowAppPassword]=useState(false);
 
     const handleSignUp=()=>{
         console.log('Sign up attempted with:', { email, password });
@@ -38,6 +41,7 @@ function SignUp() {
                             placeholder="Your email address"
                         />
                     </div>
+
                     <div className="signup-group">
                         <div className="signup-password-header">
                             <label className="signup-label">Password</label>
@@ -53,18 +57,51 @@ function SignUp() {
                             <button 
                                 type="button"
                                 onClick={() => setShowPassword(!showPassword)}
-                                className="signup-toggle"
+                                className="signup-toggle-PASSWORD"
                             >
                                 {showPassword ? "👁️" : "👁️‍🗨️"}
                             </button>
                         </div>
                     </div>
+
+                    <div className="signup-group">
+                        <div className="signup-appPassword-header">
+                            <label className="signup-label">App Password</label>
+                        </div>
+                        <div className="signup-appPassword-container">
+                            <input
+                                type={showAppPassword ? "text" : "password"}
+                                value={appPassword}
+                                onChange={(e) => setAppPassword(e.target.value)}
+                                className="signup-input-password"
+                                placeholder="Your app password"
+                            />
+                            <button 
+                                type="button"
+                                onClick={() => setShowAppPassword(!showAppPassword)}
+                                className="signup-toggle-APPPASSWORD"
+                            >
+                                {showAppPassword ? "👁️" : "👁️‍🗨️"}
+                            </button>
+                        </div>
+                        <div className="signup-footer">
+                            <span className="signup-footer-text">Need help finding your APP Password?.</span>
+                            <br />
+                            <a href='https://support.google.com/mail/answer/185833?hl=en' target="_blank" rel="noopener noreferrer"   className="signup-help-link">Click Here</a>
+                        </div>
+                    </div>
+
                     <button onClick={handleSignUp} className="signup-button">Sign Up</button>
-                    <div className="signup-footer">
+
+                    <div className="signup-footer-USER">
                         <span className="signup-footer-text">Already a User?</span>
-                        <a href="#" className="signup-login-link">Log In</a>
+                        <a href="#" className="signup-login-link" onClick={(e)=>{
+                            e.preventDefault();
+                            navigate('/signin');
+                        }}>Log In</a>
                     </div>
                 </div>
+
             </div>
 
             <div className="signup-right">

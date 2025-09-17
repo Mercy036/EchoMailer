@@ -71,6 +71,7 @@
     gap: 12px;
     width: 100%;
     max-width: 320px;
+    margin-bottom: 3rem;
 }
 
 .signup-group {
@@ -85,11 +86,19 @@
     margin-bottom: 4px;
 }
 
+.signup-appPassword-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
+}
+
 .signup-label {
     margin-bottom: 6px;
     font-size: 12px;
     font-weight: 500;
     text-align: left;
+    margin-left: 4px;
 }
 
 .signup-input-email,
@@ -111,7 +120,32 @@
     align-items: center;
 }
 
-.signup-toggle {
+.signup-appPassword-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.signup-toggle-PASSWORD{
+    position: absolute;
+    right: 12px; 
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #6b7280;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 4px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 24px; 
+    min-height: 24px;
+    z-index: 10;
+}
+
+.signup-toggle-APPPASSWORD {
     position: absolute;
     right: 12px; 
     top: 50%;
@@ -150,9 +184,32 @@
 
 .signup-footer {
     margin-top: 16px;
-    text-align: center;
     font-size: 11px;
-    margin-right: 12rem;
+    text-align: center;
+    margin-right: 7.5rem;
+}
+
+.signup-footer-USER {
+    margin-top: 0px;
+    font-size: 11px;
+    text-align: center;
+    margin-right: 12.5rem;
+}
+
+.signup-help-link {
+    color: #3b82f6;
+    text-decoration: none;
+    margin-left: 4px;
+    margin-right: 9.08rem;
+}
+
+.signup-help-link:hover {
+    text-decoration: underline;
+}
+
+
+.signup-footer a {
+    margin-left: 4px;
 }
 
 .signup-footer-text {
@@ -210,7 +267,7 @@
     inset: 0;
     margin: auto;
     background: conic-gradient(from 0deg, #08f, #f60, #bbffa1, #4c00ff, #ab2666, #09f);
-    animation: spinBlob 20s linear infinite;
+    animation: spinBlob 15s linear infinite;
 }
 
 .signup-trusted {
