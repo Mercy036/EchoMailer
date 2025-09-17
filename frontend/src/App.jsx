@@ -6,11 +6,13 @@ import Dashboard from './pages/dashboard';
 import Compose from "./pages/compose"
 import Emails from "./pages/emails"
 import SignUp from './pages/sign_up';
+import Landing from './pages/landing';
 
 function App() {
   return (
     <BrowserRouter>
     <Routes>
+      <Route path='/' element={<Landing />} />
       <Route path='/signin' element={<SignIn />} />
       <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/compose" element={<Compose />} />

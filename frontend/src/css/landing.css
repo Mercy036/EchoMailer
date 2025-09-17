@@ -1,0 +1,172 @@
+@font-face {
+  font-family: 'ImpactWrench';
+  src: url('/fonts/impactwrench.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.landing-container {
+  display: inline-block;     
+  position: relative;        
+  background: black;         
+  text-align: center;
+  width: 80vw;
+  height: 18vh;
+  margin-top: 15rem;
+  margin-left: 35rem;
+}
+
+.landing-text {
+  font-family: 'ImpactWrench', sans-serif;
+  font-size: 150px;
+  margin: 0;
+  line-height: 1;
+  position: absolute;      
+  opacity: 0;        
+  letter-spacing: 10px;      
+  
+  color: #ffb3d9 !important;
+  text-shadow: 
+    0 0 3px #ff99cc,
+    0 0 6px #ffb3d9,
+    1px 1px 2px rgba(0,0,0,0.1) !important;
+  
+  animation: pinkGlow 3s ease-in-out infinite;
+}
+
+.echo {
+  top: 0;
+  left: 0;
+  animation: slideInLeft 1.2s ease-out forwards;
+  z-index: 2;
+}
+
+.mailer {
+  top: 40%;  
+  left: 10%;      
+  animation: slideInRight 1.2s ease-out forwards;
+  opacity: 0.4 !important;
+  filter: blur(1px);
+  z-index: 1;
+}
+
+/* Pink glow animation */
+@keyframes pinkGlow {
+  0%, 100% {
+    text-shadow: 
+      0 0 5px #ff1493,
+      0 0 10px #ff69b4,
+      0 0 15px #da70d6,
+      2px 2px 4px rgba(0,0,0,0.5);
+  }
+  50% {
+    text-shadow: 
+      0 0 10px #ff1493,
+      0 0 20px #ff69b4,
+      0 0 30px #da70d6,
+      0 0 40px #ba55d3,
+      2px 2px 4px rgba(0,0,0,0.5);
+  }
+}
+
+@keyframes pinkGlow {
+  0%, 100% {
+    text-shadow: 
+      0 0 2px #ff99cc,
+      0 0 4px #ffb3d9,
+      1px 1px 2px rgba(0,0,0,0.1);
+  }
+  50% {
+    text-shadow: 
+      0 0 4px #ff99cc,
+      0 0 8px #ffb3d9,
+      0 0 12px #ffc2e0,
+      1px 1px 2px rgba(0,0,0,0.1);
+  }
+}
+
+/* Animations */
+@keyframes slideInLeft {
+  0% {
+    transform: translateX(-150%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  0% {
+    transform: translateX(150%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 0.4;
+  }
+}
+
+.auth-buttons {
+  position: fixed !important;
+  top: 2rem !important;
+  right: 2rem !important;
+  display: flex !important;
+  gap: 1rem !important;
+  z-index: 1000 !important;
+}
+
+.auth-btn {
+  padding: 0.75rem 1.5rem !important;
+  border: 2px solid white !important;
+  background: transparent !important;
+  color: white !important;
+  font-family: 'ImpactWrench', sans-serif !important;
+  font-size: 16px !important;
+  font-weight: bold !important;
+  letter-spacing: 1px !important;
+  cursor: pointer !important;
+  border-radius: 5px !important;
+  transition: all 0.3s ease !important;
+  text-transform: uppercase !important;
+  text-decoration: none !important;
+  outline: none !important;
+}
+
+.auth-btn:hover {
+  background: white !important;
+  color: black !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2) !important;
+}
+
+.login-btn {
+  border-color: #ff69b4 !important;
+  color: #ff69b4 !important;
+  background: transparent !important;
+}
+
+.login-btn:hover {
+  background: #ff69b4 !important;
+  color: white !important;
+}
+
+.signup-btn {
+  background: linear-gradient(45deg, #ff1493, #ff69b4) !important;
+  border: 2px solid transparent !important;
+  color: white !important;
+}
+
+.signup-btn:hover {
+  background: linear-gradient(45deg, #ff69b4, #da70d6) !important;
+  transform: translateY(-2px) scale(1.05) !important;
+  box-shadow: 0 5px 20px rgba(255, 105, 180, 0.4) !important;
+}
+
+button.auth-btn {
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  appearance: none !important;
+  box-sizing: border-box !important;
+}
