@@ -136,16 +136,9 @@ function Dashboard() {
                                     </div>
                                     <div className="insight-item">
                                         <div className="insight-icon">
-                                            <img src={peopleCardIcon} alt="peoplecard" />
-                                        </div>
-                                        <div className="insight-number">8,549</div>
-                                        <div className="insight-label">Total Subscribers</div>
-                                    </div>
-                                    <div className="insight-item">
-                                        <div className="insight-icon">
                                             <img src={upCardIcon} alt="upicon" />
                                         </div>
-                                        <div className="insight-number">94.2%</div>
+                                        <div className="insight-number">{emails.length}</div>
                                         <div className="insight-label">This Month</div>
                                     </div>
                                 </div>
@@ -192,7 +185,7 @@ function Dashboard() {
                             <div className="campaigns-panel">
                                 <div className="panel-header">
                                     <h2 className="panel-title">Recent Email Campaigns</h2>
-                                    <span className="panel-count">{recentCampaigns.length} total</span>
+
                                 </div>
 
                                 <div className="campaigns-list">
@@ -215,7 +208,7 @@ function Dashboard() {
                                             <p>No campaigns found. Create your first campaign!</p>
                                             <button 
                                                 onClick={() => navigate('/compose')}
-                                                className="action-btn primary"
+                                                className="create-campaign-btn"
                                             >
                                                 Create Campaign
                                             </button>

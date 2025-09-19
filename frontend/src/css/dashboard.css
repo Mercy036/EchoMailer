@@ -193,6 +193,7 @@ body{
 
 .insight-item {
   text-align: center;
+  margin-left: 12.5rem;
 }
 
 .insight-icon {
@@ -205,6 +206,12 @@ body{
   justify-content: center;
   font-size: 20px;
   margin: 0 auto 12px;
+}
+
+.create-campaign-btn{
+  padding: 15px 15px;
+  margin-top: 2rem;
+  background-color: rgb(255, 0, 200);
 }
 
 .insight-icon img{
