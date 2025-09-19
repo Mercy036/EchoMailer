@@ -24,7 +24,6 @@ function Compose() {
         if (!token) navigate("/signup");
     }, [navigate]);
 
-    // Validation function
     const validateForm = () => {
         const userEmail = localStorage.getItem("email");
         if (!userEmail) {
@@ -44,7 +43,6 @@ function Compose() {
             return false;
         }
         
-        // Validate email format
         const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         const recipientsList = recipients.split(',').map(email => email.trim());
         for (const email of recipientsList) {
@@ -54,7 +52,6 @@ function Compose() {
             }
         }
 
-        // If scheduling for later, validate date and time
         if (scheduleFor === 'later') {
             if (!scheduleDate) {
                 setErrorMessage('Schedule date is required');
@@ -65,7 +62,6 @@ function Compose() {
                 return false;
             }
             
-            // Check if scheduled time is in the future
             const scheduledDateTime = new Date(`${scheduleDate}T${scheduleTime}`);
             const now = new Date();
             if (scheduledDateTime <= now) {
@@ -78,11 +74,9 @@ function Compose() {
     };
 
     const handleSend = async () => {
-        // Clear previous messages
         setErrorMessage('');
         setSuccessMessage('');
 
-        // Validate form
         if (!validateForm()) {
             return;
         }
@@ -91,18 +85,16 @@ function Compose() {
 
         const userEmail = localStorage.getItem("email");
         const formData = {
-            from: userEmail, // Add the from field
+            from: userEmail, 
             to: recipients.trim(),
             subject: subject.trim(),
             message: emailContent.trim(),
         };
 
-        // Only add template if one is selected
         if (selectedTemplate) {
             formData.template = selectedTemplate;
         }
 
-        // Only add scheduled time if scheduling for later
         if (scheduleFor === "later") {
             formData.scheduledTime = `${scheduleDate}T${scheduleTime}`;
         }
