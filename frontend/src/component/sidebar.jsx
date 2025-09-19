@@ -1,4 +1,5 @@
-import React from "react";
+// sidebar.jsx
+import React, { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import "../css/sidebar.css";
 import dashboardIcon from "../assets/bar-graph-statistics-svgrepo-com.svg";
@@ -8,6 +9,38 @@ import composeIcon from "../assets/paper-airplane-svgrepo-com.svg";
 function Sidebar() {
     const navigate = useNavigate();
     const pageLocation = useLocation();
+
+    const [userName, setUserName] = useState("");
+    const [userEmail, setUserEmail] = useState("");
+    const [profilePic, setProfilePic] = useState("");
+
+    useEffect(() => {
+        const storedEmail = localStorage.getItem("email");
+        const storedName = localStorage.getItem("name");
+        const storedPic = localStorage.getItem("profilePic");
+
+        if (storedEmail) setUserEmail(storedEmail);
+        if (storedName) setUserName(storedName);
+
+        if (storedPic) {
+            setProfilePic(storedPic);
+        } else if (storedName) {
+            setProfilePic(`https://ui-avatars.com/api/?name=${encodeURIComponent(storedName)}&background=e91e63&color=fff`);
+        } else if (storedEmail) {
+            setProfilePic(`https://ui-avatars.com/api/?name=${encodeURIComponent(storedEmail)}&background=e91e63&color=fff`);
+        } else {
+            setProfilePic("https://i.pravatar.cc/150?u=default"); // final fallback
+        }
+    }, []);
+
+
+
+    const handleLogout = () => {
+        localStorage.removeItem("token");
+        localStorage.removeItem("email");
+        localStorage.removeItem("name");
+        navigate("/signup");
+    };
 
     return (
         <div className="sidebar">
@@ -40,11 +73,18 @@ function Sidebar() {
             <hr />
 
             <div className="profile-section">
-                <div className="profile-picture">A</div>
-                <div className="profile-name">Ansh</div>
-                <div className="profile-email">ansh@gmail.com</div>
+                <div className="profile-picture">
+                {profilePic ? (
+                    <img src={profilePic} alt="profile" style={{ width: "100%", height: "100%", borderRadius: "50%" }} />
+                ) : (
+                    userName ? userName.charAt(0).toUpperCase() : "?"
+                )}
+                </div>
+
+                <div className="profile-name">{userName || "User"}</div>
+                <div className="profile-email">{userEmail || "Not logged in"}</div>
                 <div className="logout-button">
-                    <button>Sign Out</button>
+                    <button onClick={handleLogout}>Sign Out</button>
                 </div>
             </div>
         </div>

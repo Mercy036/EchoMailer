@@ -10,13 +10,53 @@ function SignIn() {
     const [email,setEmail]=useState('');
     const [password,setPassword]=useState('');
     const [showPassword,setShowPassword]=useState(false);
-    const handleSignIn=()=>{
-        console.log('Sign in attempted with:', { email, password });
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
+    const handleSignIn = async () => {
+        if (!email || !password) {
+            alert("Please fill in all fields");
+            return;
+        }
+
+        setIsSubmitting(true);
+        
+        try {
+            const response = await fetch("http://localhost:8000/api/log-in", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    email: email,
+                    loginPassword: password
+                }),
+            });
+
+            const result = await response.json();
+
+            if (response.ok) {
+                // Save tokens or user info if needed
+                localStorage.setItem("token", result.accessToken);
+                localStorage.setItem("email", result.email);
+                
+
+                // Redirect to dashboard
+                navigate("/dashboard");
+            } else {
+                alert(result.message || "Invalid credentials, try again.");
+            }
+        } catch (error) {
+            console.error(error);
+            alert("Something went wrong. Please try again later.");
+        } finally {
+            setIsSubmitting(false);
+        }
     };
+
     const handleGoogleSignIn=()=>{
         console.log('Google sign in clicked');
     };
-    return (        <div className="sign-in-container">
+
+    return (        
+        <div className="sign-in-container">
             <div className="left-section">
                 <div className="header">
                     <div className="logo">
@@ -63,7 +103,13 @@ function SignIn() {
                             </button>
                         </div>
                     </div>
-                    <button onClick={handleSignIn} className="login-button">Log in</button>
+                    <button 
+                        onClick={handleSignIn} 
+                        className="login-button"
+                        disabled={isSubmitting}
+                    >
+                        {isSubmitting ? "Signing In..." : "Log in"}
+                    </button>
                     <div className="sign-up-section">
                         <span className="sign-up-text">Don't have an account? </span>
                         <a href="#" className="sign-up-link" onClick={(e)=>{

@@ -8,8 +8,6 @@ import filterIcon from "../assets/filter.svg";
 import searchIcon from "../assets/search.svg";
 import calendarIcon from "../assets/calender-svgrepo-com.svg";
 import sortIcon from "../assets/sort.svg";
-import eyeIcon from "../assets/eye-svgrepo-com.svg";
-import notepadIcon from "../assets/notepad-svgrepo-com.svg";
 import deleteIcon from "../assets/delete-2-svgrepo-com.svg";
 import pinkTickIcon from "../assets/pink-tick.svg";
 import yellowClockIcon from "../assets/yellow-clock.svg";
@@ -17,105 +15,74 @@ import yellowClockIcon from "../assets/yellow-clock.svg";
 function Emails() {
     const navigate = useNavigate();
     const [emails, setEmails] = useState([]);
-    const [loading, setLoading] = useState(false);
-    const [selectedFilter, setSelectedFilter] = useState('all');
-    const [searchQuery, setSearchQuery] = useState('');
-    const [sortBy, setSortBy] = useState('date');
+    const [loading, setLoading] = useState(true);
+    const [selectedFilter, setSelectedFilter] = useState("all");
+    const [searchQuery, setSearchQuery] = useState("");
+    const [sortBy, setSortBy] = useState("date");
+    const [error, setError] = useState("");
 
-    const emailCampaigns = [
-        {
-            id: 1,
-            title: "Welcome to EchoMailer - Get Started Today",
-            recipients: ["new-user@example.com"],
-            status: "sent",
-            sentDate: "2024-01-08",
-            sentTime: "10:30 AM",
-            opens: 145,
-            clicks: 23,
-            deliveryRate: "98.5%",
-            subject: "Welcome! Let's get you started with EchoMailer",
-            template: "welcome"
-        },
-        {
-            id: 2,
-            title: "Weekly Newsletter - Product Updates",
-            recipients: ["newsletter@example.com"],
-            status: "scheduled",
-            scheduledDate: "2024-01-09",
-            scheduledTime: "9:00 AM",
-            subject: "This week's product updates and features",
-            template: "newsletter"
-        },
-        {
-            id: 3,
-            title: "Special Offer - 50% Off Premium Features",
-            recipients: ["marketing@example.com", "promo@example.com"],
-            status: "sent",
-            sentDate: "2024-01-07",
-            sentTime: "2:15 PM",
-            opens: 89,
-            clicks: 34,
-            deliveryRate: "97.2%",
-            subject: "Limited time: 50% off all premium features!",
-            template: "promotional"
-        },
-        {
-            id: 5,
-            title: "Monthly Report - December Analytics",
-            recipients: ["reports@example.com", "analytics@example.com"],
-            status: "sent",
-            sentDate: "2024-01-06",
-            sentTime: "5:00 AM",
-            opens: 67,
-            clicks: 12,
-            deliveryRate: "99.1%",
-            subject: "Your December analytics report is ready",
-            template: "report"
-        },
-        {
-            id: 7,
-            title: "Product Launch - New Dashboard Features",
-            recipients: ["beta-users@example.com"],
-            status: "sent",
-            sentDate: "2024-01-05",
-            sentTime: "3:30 PM",
-            opens: 234,
-            clicks: 67,
-            deliveryRate: "96.8%",
-            subject: "Exciting new dashboard features are here!",
-            template: "announcement"
-        },
-        {
-            id: 8,
-            title: "Customer Feedback Survey",
-            recipients: ["customers@example.com"],
-            status: "scheduled",
-            scheduledDate: "2024-01-10",
-            scheduledTime: "11:00 AM",
-            subject: "Help us improve - 2 minute feedback survey",
-            template: "survey"
-        }
-    ];
+    useEffect(() => {
+        const fetchEmails = async () => {
+            try {
+                const token = localStorage.getItem("token");
+                if (!token) {
+                    navigate("/signup");
+                    return;
+                }
+                const res = await fetch("http://localhost:8000/api/scheduled", {
+                    method: "GET",
+                    headers: {
+                        Authorization: token,
+                    },
+                });
 
-    const filteredEmails = emailCampaigns.filter(email => {
-        const matchesFilter = selectedFilter === 'all' || email.status === selectedFilter;
-        const matchesSearch = email.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                            email.subject.toLowerCase().includes(searchQuery.toLowerCase());
+                if (!res.ok) {
+                    throw new Error(`HTTP error! status: ${res.status}`);
+                }
+
+                const data = await res.json();
+                setEmails(data);
+                setError("");
+            } catch (err) {
+                console.error("Error fetching emails:", err);
+                setError("Failed to fetch emails. Please check if the server is running.");
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchEmails();
+    }, [navigate]);
+
+    // 🔥 Frontend-only delete
+    const handleDelete = (index) => {
+        setEmails((prev) => prev.filter((_, i) => i !== index));
+    };
+
+    const filteredEmails = emails.filter((email) => {
+        const matchesFilter = selectedFilter === "all" || email.status === selectedFilter;
+        const matchesSearch =
+            (email.subject && email.subject.toLowerCase().includes(searchQuery.toLowerCase())) ||
+            (email.to && email.to.toLowerCase().includes(searchQuery.toLowerCase()));
         return matchesFilter && matchesSearch;
     });
 
     const getStatusBadgeClass = (status) => {
         switch (status) {
-            case 'sent': return 'status-badge sent';
-            case 'scheduled': return 'status-badge scheduled';
-            case 'failed': return 'status-badge failed';
-            case 'draft': return 'status-badge draft';
-            default: return 'status-badge';
+            case "sent":
+                return "status-badge sent";
+            case "scheduled":
+                return "status-badge scheduled";
+            case "failed":
+                return "status-badge failed";
+            case "draft":
+                return "status-badge draft";
+            default:
+                return "status-badge";
         }
     };
 
     const handleCreateNew = () => {
-        navigate('/compose');
+        navigate("/compose");
     };
 
     return (
@@ -139,7 +106,7 @@ function Emails() {
                     <div className="filters-section">
                         <div className="filter-group">
                             <img src={filterIcon} alt="filter" className="filter-icon" />
-                            <select 
+                            <select
                                 className="filter-select"
                                 value={selectedFilter}
                                 onChange={(e) => setSelectedFilter(e.target.value)}
@@ -149,10 +116,10 @@ function Emails() {
                                 <option value="scheduled">Scheduled</option>
                             </select>
                         </div>
-                        
+
                         <div className="sort-group">
                             <img src={sortIcon} alt="sort" className="sort-icon" />
-                            <select 
+                            <select
                                 className="sort-select"
                                 value={sortBy}
                                 onChange={(e) => setSortBy(e.target.value)}
@@ -184,84 +151,152 @@ function Emails() {
                         <span className="campaigns-count">{filteredEmails.length} campaigns</span>
                     </div>
 
-                    <div className="campaigns-list">
-                        {filteredEmails.map((campaign) => (
-                            <div key={campaign.id} className="campaign-card">
-                                <div className="campaign-main">
-                                    <div className="campaign-header">
-                                        <h3 className="campaign-title">{campaign.title}</h3>
-                                        <span className={getStatusBadgeClass(campaign.status)}>
+                    {error && (
+                        <div
+                            className="error-message"
+                            style={{
+                                background: "#fee",
+                                color: "#c33",
+                                border: "1px solid #fcc",
+                                padding: "10px 15px",
+                                borderRadius: "4px",
+                                marginBottom: "15px",
+                            }}
+                        >
+                            {error}
+                        </div>
+                    )}
+
+                    {loading ? (
+                        <div className="loading-state">
+                            <p>Loading campaigns...</p>
+                        </div>
+                    ) : (
+                        <div className="campaigns-list">
+                            {filteredEmails.map((campaign, index) => (
+                                <div
+                                    key={campaign.to + campaign.subject + index}
+                                    className="campaign-card"
+                                >
+                                    <div className="campaign-main">
+                                        <div className="campaign-header">
+                                            <h3 className="campaign-title">
+                                                {campaign.subject || "No Subject"}
+                                            </h3>
+                                            <span className={getStatusBadgeClass(campaign.status)}>
+                                                {campaign.status === "sent" && (
+                                                    <>
+                                                        <img
+                                                            src={pinkTickIcon}
+                                                            alt="sent"
+                                                            className="status-icon"
+                                                        />
+                                                        Sent
+                                                    </>
+                                                )}
+                                                {campaign.status === "scheduled" && (
+                                                    <>
+                                                        <img
+                                                            src={yellowClockIcon}
+                                                            alt="scheduled"
+                                                            className="status-icon"
+                                                        />
+                                                        Scheduled
+                                                    </>
+                                                )}
+                                                {campaign.status !== "sent" &&
+                                                    campaign.status !== "scheduled" &&
+                                                    campaign.status}
+                                            </span>
+                                        </div>
+
+                                        <div className="campaign-subject">
+                                            <strong>Subject:</strong>{" "}
+                                            {campaign.subject || "No Subject"}
+                                        </div>
+
+                                        <div className="campaign-recipients">
+                                            <strong>To:</strong> {campaign.to || "No recipient"}
+                                        </div>
+
+                                        <div className="campaign-meta">
                                             {campaign.status === "sent" && (
                                                 <>
-                                                <img src={pinkTickIcon} alt="sent" className="status-icon" />
-                                                Sent
+                                                    <span>
+                                                        Sent {campaign.sentDate || "Unknown date"}{" "}
+                                                        {campaign.sentTime || ""}
+                                                    </span>
+                                                    {campaign.opens && (
+                                                        <>
+                                                            <span>•</span>
+                                                            <span>{campaign.opens} opens</span>
+                                                        </>
+                                                    )}
+                                                    {campaign.clicks && (
+                                                        <>
+                                                            <span>•</span>
+                                                            <span>{campaign.clicks} clicks</span>
+                                                        </>
+                                                    )}
+                                                    {campaign.deliveryRate && (
+                                                        <>
+                                                            <span>•</span>
+                                                            <span>
+                                                                {campaign.deliveryRate} delivered
+                                                            </span>
+                                                        </>
+                                                    )}
                                                 </>
                                             )}
                                             {campaign.status === "scheduled" && (
                                                 <>
-                                                <img src={yellowClockIcon} alt="scheduled" className="status-icon" />
-                                                Scheduled
+                                                    <img
+                                                        src={calendarIcon}
+                                                        alt="calendar"
+                                                        className="meta-icon"
+                                                    />
+                                                    <span>
+                                                        Scheduled for{" "}
+                                                        {campaign.scheduledDate || "Unknown date"}{" "}
+                                                        {campaign.scheduledTime || ""}
+                                                    </span>
                                                 </>
                                             )}
-                                            {campaign.status !== "sent" && campaign.status !== "scheduled" && campaign.status}
-                                        </span>
+                                            {campaign.status === "draft" && (
+                                                <span>Draft created • Not scheduled</span>
+                                            )}
+                                            {campaign.status === "failed" && (
+                                                <span>
+                                                    Failed to send on{" "}
+                                                    {campaign.sentDate || "Unknown date"}{" "}
+                                                    {campaign.sentTime || ""}
+                                                </span>
+                                            )}
+                                        </div>
                                     </div>
-                                    
-                                    <div className="campaign-subject">
-                                        <strong>Subject:</strong> {campaign.subject}
-                                    </div>
-                                    
-                                    <div className="campaign-recipients">
-                                        <strong>To:</strong> {campaign.recipients.join(', ')}
-                                    </div>
-                                    
-                                    <div className="campaign-meta">
-                                        {campaign.status === 'sent' && (
-                                            <>
-                                                <span>Sent {campaign.sentDate} {campaign.sentTime}</span>
-                                                <span>•</span>
-                                                <span>{campaign.opens} opens</span>
-                                                <span>•</span>
-                                                <span>{campaign.clicks} clicks</span>
-                                                <span>•</span>
-                                                <span>{campaign.deliveryRate} delivered</span>
-                                            </>
-                                        )}
-                                        {campaign.status === 'scheduled' && (
-                                            <>
-                                                <img src={calendarIcon} alt="calendar" className="meta-icon" />
-                                                <span>Scheduled for {campaign.scheduledDate} {campaign.scheduledTime}</span>
-                                            </>
-                                        )}
-                                        {campaign.status === 'draft' && (
-                                            <span>Draft created • Not scheduled</span>
-                                        )}
-                                        {campaign.status === 'failed' && (
-                                            <span>Failed to send on {campaign.sentDate} {campaign.sentTime}</span>
-                                        )}
+
+                                    <div className="campaign-actions">
+                                        <button
+                                            className="action-btn delete-btn"
+                                            title="Delete"
+                                            onClick={() => handleDelete(index)}
+                                        >
+                                            <img src={deleteIcon} alt="delete" />
+                                        </button>
                                     </div>
                                 </div>
+                            ))}
+                        </div>
+                    )}
 
-                                <div className="campaign-actions">
-                                    <button className="action-btn view-btn" title="View">
-                                        <img src={eyeIcon} alt="" />
-                                    </button>
-                                    <button className="action-btn edit-btn" title="Edit">
-                                        <img src={notepadIcon} alt="" />
-                                    </button>
-                                    <button className="action-btn delete-btn" title="Delete">
-                                        <img src={deleteIcon} alt="" />
-                                    </button>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-
-                    {filteredEmails.length === 0 && (
+                    {!loading && !error && filteredEmails.length === 0 && (
                         <div className="empty-state">
                             <div className="empty-icon">📧</div>
                             <h3>No campaigns found</h3>
-                            <p>Try adjusting your filters or create a new campaign to get started.</p>
+                            <p>
+                                Try adjusting your filters or create a new campaign to get
+                                started.
+                            </p>
                             <button onClick={handleCreateNew} className="empty-cta-btn">
                                 <img src={planeIcon} alt="create" className="btn-icon" />
                                 Create New Campaign

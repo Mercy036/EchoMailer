@@ -1,18 +1,42 @@
 import { useState } from "react";
 import "../css/sign_up.css";
-
 import emailIcon from "../assets/email.svg";
-import {useNavigate} from 'react-router-dom';
-function SignUp() {
-    const navigate=useNavigate();
-    const [email,setEmail]=useState('');
-    const [password,setPassword]=useState('');
-    const [showPassword,setShowPassword]=useState(false);
-    const [appPassword,setAppPassword]=useState('');
-    const [showAppPassword,setShowAppPassword]=useState(false);
+import { useNavigate } from "react-router-dom";
 
-    const handleSignUp=()=>{
-        console.log('Sign up attempted with:', { email, password });
+function SignUp() {
+    const navigate = useNavigate();
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [showPassword, setShowPassword] = useState(false);
+    const [appPassword, setAppPassword] = useState('');
+    const [showAppPassword, setShowAppPassword] = useState(false);
+    const [loading, setLoading] = useState(false);
+
+    const handleSignUp = async () => {
+        setLoading(true);
+        try {
+            const response = await fetch("http://localhost:8000/api/sign-up", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    email,
+                    loginPassword: password,
+                    appPassword,
+                }),
+            });
+
+            if (response.ok) {
+                navigate("/signin"); // ✅ redirect on success
+            } else {
+                const errorData = await response.json();
+                alert(errorData.message || "Signup failed. Please try again.");
+            }
+        } catch (error) {
+            console.error("Signup error:", error);
+            alert("Something went wrong. Please try again later.");
+        } finally {
+            setLoading(false);
+        }
     };
 
     return (
@@ -72,7 +96,7 @@ function SignUp() {
                             <input
                                 type={showAppPassword ? "text" : "password"}
                                 value={appPassword}
-                                onChange={(e) => setAppPassword(e.target.value)}
+                                onChange={(e) => setAppPassword(e.target.value.replace(/\s+/g, ""))}
                                 className="signup-input-password"
                                 placeholder="Your app password"
                             />
@@ -87,21 +111,29 @@ function SignUp() {
                         <div className="signup-footer">
                             <span className="signup-footer-text">Need help finding your APP Password?.</span>
                             <br />
-                            <a href='https://support.google.com/mail/answer/185833?hl=en' target="_blank" rel="noopener noreferrer"   className="signup-help-link">Click Here</a>
+                            <a 
+                                href='https://support.google.com/mail/answer/185833?hl=en' 
+                                target="_blank" 
+                                rel="noopener noreferrer" 
+                                className="signup-help-link"
+                            >
+                                Click Here
+                            </a>
                         </div>
                     </div>
 
-                    <button onClick={handleSignUp} className="signup-button">Sign Up</button>
+                    <button onClick={handleSignUp} className="signup-button" disabled={loading}>
+                        {loading ? "Signing Up..." : "Sign Up"}
+                    </button>
 
                     <div className="signup-footer-USER">
                         <span className="signup-footer-text">Already a User?</span>
-                        <a href="#" className="signup-login-link" onClick={(e)=>{
+                        <a href="#" className="signup-login-link" onClick={(e) => {
                             e.preventDefault();
                             navigate('/signin');
                         }}>Log In</a>
                     </div>
                 </div>
-
             </div>
 
             <div className="signup-right">
