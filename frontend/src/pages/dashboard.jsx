@@ -30,8 +30,7 @@ function Dashboard() {
                 return;
             }
 
-            // Fetch emails data like the working version
-            const res = await fetch("http://localhost:8000/api/scheduled", {
+            const res = await fetch("https://echomailer.onrender.com/api/scheduled", {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",

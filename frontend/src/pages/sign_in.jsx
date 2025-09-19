@@ -21,7 +21,7 @@ function SignIn() {
         setIsSubmitting(true);
         
         try {
-            const response = await fetch("http://localhost:8000/api/log-in", {
+            const response = await fetch("https://echomailer.onrender.com/api/log-in", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({

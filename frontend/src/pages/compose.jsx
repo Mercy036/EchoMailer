@@ -117,7 +117,7 @@ function Compose() {
 
             console.log('Sending email with data:', formData); 
 
-            const response = await fetch("http://localhost:8000/api/send-email", {
+            const response = await fetch("https://echomailer.onrender.com/api/send-email", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

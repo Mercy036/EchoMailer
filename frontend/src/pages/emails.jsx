@@ -29,7 +29,7 @@ function Emails() {
                     navigate("/signup");
                     return;
                 }
-                const res = await fetch("http://localhost:8000/api/scheduled", {
+                const res = await fetch("https://echomailer.onrender.com/api/scheduled", {
                     method: "GET",
                     headers: {
                         Authorization: token,
