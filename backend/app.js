@@ -42,6 +42,7 @@ app.use('/api', router);
 if (process.env.NODE_ENV === 'production' || process.env.RENDER) {
   console.log('🌐 Production environment detected - Setting up keep-alive...');
   
+ // keep alive
   cron.schedule('*/10 * * * *', async () => {
     try {
       console.log(`🏓 Keep-alive ping at ${new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })}`);
@@ -62,7 +63,8 @@ if (process.env.NODE_ENV === 'production' || process.env.RENDER) {
     }
   });
 
-  cron.schedule('*/12 * * * *', async () => {
+  // Auto-trigger email cron every 2 minutes so that if scheduler fails email still get sent 
+  cron.schedule('*/2 * * * *', async () => {
     try {
       console.log(`🔄 Auto-triggering email cron at ${new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })}`);
       
