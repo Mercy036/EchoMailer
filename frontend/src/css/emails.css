@@ -242,8 +242,9 @@
 }
 
 .campaigns-count {
-  font-size: 12px;
-  color: #9ca3af;
+  font-size: 15px;
+  color: #ffffff;
+  font-weight: bold;
 }
 
 .campaigns-list {

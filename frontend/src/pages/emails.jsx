@@ -135,7 +135,7 @@ function Emails() {
                 <div className="campaigns-container">
                     <div className="campaigns-header-row">
                         <h2 className="campaigns-title">Recent Email Campaigns</h2>
-                        <span className="campaigns-count">{filteredEmails.length} campaigns</span>
+                        <span className="campaigns-count">{filteredEmails.length} Campaigns</span>
                     </div>
 
                     {error && (
