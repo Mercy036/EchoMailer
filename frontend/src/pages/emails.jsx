@@ -206,60 +206,7 @@ function Emails() {
                                             <strong>To:</strong> {campaign.to || "No recipient"}
                                         </div>
 
-                                        <div className="campaign-meta">
-                                            {campaign.status === "sent" && (
-                                                <>
-                                                    <span>
-                                                        Sent {campaign.sentDate || "Unknown date"}{" "}
-                                                        {campaign.sentTime || ""}
-                                                    </span>
-                                                    {campaign.opens && (
-                                                        <>
-                                                            <span>•</span>
-                                                            <span>{campaign.opens} opens</span>
-                                                        </>
-                                                    )}
-                                                    {campaign.clicks && (
-                                                        <>
-                                                            <span>•</span>
-                                                            <span>{campaign.clicks} clicks</span>
-                                                        </>
-                                                    )}
-                                                    {campaign.deliveryRate && (
-                                                        <>
-                                                            <span>•</span>
-                                                            <span>
-                                                                {campaign.deliveryRate} delivered
-                                                            </span>
-                                                        </>
-                                                    )}
-                                                </>
-                                            )}
-                                            {campaign.status === "scheduled" && (
-                                                <>
-                                                    <img
-                                                        src={calendarIcon}
-                                                        alt="calendar"
-                                                        className="meta-icon"
-                                                    />
-                                                    <span>
-                                                        Scheduled for{" "}
-                                                        {campaign.scheduledDate || "Unknown date"}{" "}
-                                                        {campaign.scheduledTime || ""}
-                                                    </span>
-                                                </>
-                                            )}
-                                            {campaign.status === "draft" && (
-                                                <span>Draft created • Not scheduled</span>
-                                            )}
-                                            {campaign.status === "failed" && (
-                                                <span>
-                                                    Failed to send on{" "}
-                                                    {campaign.sentDate || "Unknown date"}{" "}
-                                                    {campaign.sentTime || ""}
-                                                </span>
-                                            )}
-                                        </div>
+
                                     </div>
 
                                     <div className="campaign-actions">
