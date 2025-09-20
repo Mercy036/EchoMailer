@@ -116,19 +116,6 @@ function Emails() {
                                 <option value="scheduled">Scheduled</option>
                             </select>
                         </div>
-
-                        <div className="sort-group">
-                            <img src={sortIcon} alt="sort" className="sort-icon" />
-                            <select
-                                className="sort-select"
-                                value={sortBy}
-                                onChange={(e) => setSortBy(e.target.value)}
-                            >
-                                <option value="date">Sort by Date</option>
-                                <option value="title">Sort by Title</option>
-                                <option value="status">Sort by Status</option>
-                            </select>
-                        </div>
                     </div>
 
                     <div className="search-section">
