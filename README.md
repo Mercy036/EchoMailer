@@ -29,6 +29,8 @@ With a **React frontend** and a **Node.js + Express backend**, it integrates **M
 - [Node.js](https://nodejs.org/) – Runtime Environment
 - [Express.js](https://expressjs.com/) – Web Framework  
 - [MongoDB](https://www.mongodb.com/) – Database for users & emails
+- [Node-cron](https://www.npmjs.com/package/node-cron) – Task scheduler for automated email delivery
+- [Nodemailer](https://nodemailer.com/) – Email sending service
 
 ---
 
@@ -46,6 +48,8 @@ echo-mailer/
 │   ├── models/             # Mongoose schemas
 │   ├── routes/             # Express routes
 │   ├── utils/              # Helper functions (mailer, scheduler)
+│   │   ├── emailScheduler.js  # Cron job scheduler
+│   │   └── mailer.js          # Email sending utility
 │   └── server.js           # Entry point
 │
 ├── .env                    # Environment variables
@@ -87,7 +91,7 @@ npm install
 cd ..
 ```
 
-### 4. Run the application
+### 3. Run the application
 ```bash
 # Start the server (from root directory)
 npm run dev
@@ -97,4 +101,18 @@ cd client
 npm start
 ```
 
+## ⚙️ Cron Job Scheduling
 
+EchoMailer uses **node-cron** to automatically send scheduled emails:
+
+- **Automatic Execution**: Emails are sent precisely at scheduled times
+- **Persistent Scheduling**: Jobs survive server restarts by loading from MongoDB
+- **Job Management**: Cancel or reschedule emails before they're sent
+- **Error Handling**: Failed deliveries are logged and can be retried
+
+---
+
+
+- Thanks to all contributors who helped improve this project
+- Built with modern web technologies for reliable email automation
+- Inspired by the need for simple, effective email scheduling solutions
