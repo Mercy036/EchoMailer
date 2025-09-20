@@ -198,8 +198,6 @@ function Dashboard() {
                                                 </div>
                                                 <div className="campaign-meta">
                                                     To: {campaign.to} • 
-                                                    {campaign.status === 'sent' && ` Sent ${campaign.sentDate || 'Recently'}`}
-                                                    {campaign.status === 'scheduled' && ` Scheduled for ${campaign.scheduledDate || 'Soon'}`}
                                                 </div>
                                             </div>
                                         ))
