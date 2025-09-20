@@ -33,12 +33,10 @@ function SignIn() {
             const result = await response.json();
 
             if (response.ok) {
-                // Save tokens or user info if needed
                 localStorage.setItem("token", result.accessToken);
                 localStorage.setItem("email", result.email);
                 
 
-                // Redirect to dashboard
                 navigate("/dashboard");
             } else {
                 alert(result.message || "Invalid credentials, try again.");

@@ -26,7 +26,7 @@ function SignUp() {
             });
 
             if (response.ok) {
-                navigate("/signin"); // ✅ redirect on success
+                navigate("/signin"); 
             } else {
                 const errorData = await response.json();
                 alert(errorData.message || "Signup failed. Please try again.");
